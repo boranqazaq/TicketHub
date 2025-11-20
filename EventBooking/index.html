@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TicketHub - Бронирование Событий</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="header-content">
+            <div class="logo" onclick="showPage('home')">
+                <div class="logo-image"><img src="img/ticket-img.svg" width="24" height="24"></div>
+                <span>TicketHub</span>
+            </div>
+            <nav>
+                <a href="#" onclick="showPage('home'); return false;">Главная</a>
+                <a href="#" onclick="showPage('about'); return false;">О нас</a>
+                <a href="#" onclick="showPage('events'); return false;">События</a>
+                <a href="#" onclick="showPage('contacts'); return false;">Контакты</a>
+            </nav>
+        </div>
+    </div>
+</header>
+
+<main class="container">
+    <!-- ГЛАВНАЯ СТРАНИЦА -->
+    <div id="home" class="page active">
+        <section class="hero">
+            <h1>Добро пожаловать в TicketHub</h1>
+            <p>Платформа для бронирования событий и мероприятий вашего университета</p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary btn-large" onclick="showPage('about')">Узнать больше</button>
+                <button class="btn btn-secondary btn-large" onclick="showPage('events')">Смотреть события</button>
+            </div>
+        </section>
+
+        <section class="about-section">
+            <h2>Почему выбирают TicketHub?</h2>
+            <div class="features">
+                <div class="feature-card">
+                    <div class="icon"><img src="img/fast-img.svg" width="35" height="35"></div>
+                    <h3>Быстро</h3>
+                    <p>Бронируйте места за несколько кликов</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon"><img src="img/safe-img.svg" width="35" height="35"></div>
+                    <h3>Безопасно</h3>
+                    <p>Ваши данные защищены и конфиденциальны</p>
+                </div>
+                <div class="feature-card">
+                    <div class="icon"><img src="img/easy-img.svg" width="50" height="50"></div>
+                    <h3>Удобно</h3>
+                    <p>Интуитивный интерфейс для всех</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- СТРАНИЦА О НАС -->
+    <div id="about" class="page">
+        <section class="about-section">
+            <h2>О нас</h2>
+            <p>
+                TicketHub - современная платформа, упрощающая бронирование университетских событий.
+            </p>
+            <p>
+                Мы создаем удобный сервис для студентов, преподавателей и организаторов мероприятий.
+            </p>
+            <p>
+                Мы постоянно развиваемся и добавляем новые функции, чтобы сделать вашу жизнь в университете
+                еще более интересной и насыщенной.
+            </p>
+        </section>
+
+        <section class="about-section">
+            <h2>Наша команда</h2>
+            <div class="features team-grid">
+                <div class="feature-card"><div class="icon"><img src="img/java-img.svg" width="35" height="35"></div><h3>Yerassyl Aliev</h3><p>Backend Developer</p></div>
+                <div class="feature-card"><div class="icon"><img src="img/python-img.svg" width="35" height="35"></div><h3>Barlykov Aibar</h3><p>Backend Developer</p></div>
+                <div class="feature-card"><div class="icon"><img src="img/support-img.svg" width="35" height="35"></div><h3>Nurkassym Baglan</h3><p>Support</p></div>
+                <div class="feature-card"><div class="icon"><img src="img/js-img.svg" width="35" height="35"></div><h3>Abdulgazimov Nurbek</h3><p>Frontend Developer</p></div>
+            </div>
+        </section>
+
+        <section class="about-section">
+            <h2>Наши цели</h2>
+            <div class="features">
+                <div class="feature-card"><div class="icon"><img src="img/upgrade-img.svg" width="35" height="35"></div><h3>Рост</h3><p>Увеличиваем функционал</p></div>
+                <div class="feature-card"><div class="icon"><img src="img/help-img.svg" width="35" height="35"></div><h3>Поддержка</h3><p>Помогаем студентам</p></div>
+                <div class="feature-card"><div class="icon"><img src="img/study-img.svg" width="35" height="35"></div><h3>Образование</h3><p>Развиваем сообщества</p></div>
+            </div>
+        </section>
+    </div>
+
+    <!-- СТРАНИЦА СОБЫТИЙ -->
+    <div id="events" class="page">
+        <section class="hero">
+            <h1>Предстоящие события</h1>
+            <p>Выберите интересующее вас мероприятие и забронируйте место</p>
+        </section>
+
+        <div class="search-box">
+            <input type="text" id="searchInput" placeholder="Поиск по названию...">
+            <select id="categorySelect">
+                <option value="">Все категории</option>
+                <option value="conference">Конференция</option>
+                <option value="workshop">Мастер-класс</option>
+                <option value="seminar">Семинар</option>
+                <option value="festival">Фестиваль</option>
+            </select>
+            <button class="btn btn-primary" onclick="searchEvents()">Поиск</button>
+        </div>
+
+        <div class="success-message" id="successMessage">
+            ✓ Спасибо! Ваше бронирование принято
+        </div>
+        <div class="events-grid" id="eventsGrid"></div>
+    </div>
+
+    <!-- СТРАНИЦА КОНТАКТОВ -->
+    <div id="contacts" class="page">
+        <section class="hero">
+            <h1>Свяжитесь с нами</h1>
+            <p>Мы всегда готовы помочь и ответить на ваши вопросы</p>
+        </section>
+
+        <div class="contact-info">
+            <div class="contact-card">
+                <div class="icon"><img src="img/location-black-img.svg" width="35" height="35"></div>
+                <h3>Адрес</h3>
+                <p> Проспект Абылай хана, 1/1<br>Каскелен</p>
+            </div>
+            <div class="contact-card">
+                <div class="icon"><img src="img/phone-black-img.svg" width="35" height="35"></div>
+                <h3>Телефон</h3>
+                <p><a href="tel:+77075508424">+7 (707) 550-84-24</a></p>
+            </div>
+            <div class="contact-card">
+                <div class="icon"><img src="img/mail-black-img.svg" width="35" height="35"></div>
+                <h3>Email</h3>
+                <p><a href="mailto:bsdudent@gmail.com">bsdudent@gmail.com</a></p>
+            </div>
+        </div>
+
+        <div class="contact-form">
+            <h2>Отправить сообщение</h2>
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="contactName">Ваше имя</label>
+                    <input type="text" id="contactName" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactEmail">Email</label>
+                    <input type="email" id="contactEmail" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactSubject">Тема сообщения</label>
+                    <input type="text" id="contactSubject" required>
+                </div>
+                <div class="form-group">
+                    <label for="contactMessage">Сообщение</label>
+                    <textarea id="contactMessage" required></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary" style="width: 100%;">Отправить</button>
+            </form>
+        </div>
+    </div>
+</main>
+
+<!-- МОДАЛЬНОЕ ОКНО БРОНИРОВАНИЯ -->
+<div id="bookingModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2 style="color: #1e3a8a; margin-bottom: 1.5rem;">Забронировать место</h2>
+        <form id="bookingForm">
+            <div class="form-group">
+                <label for="eventName">Название события</label>
+                <input type="text" id="eventName" readonly>
+            </div>
+            <div class="form-group">
+                <label for="fullName">Ваше имя</label>
+                <input type="text" id="fullName" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" required>
+            </div>
+            <div class="form-group">
+                <label for="phone">Телефон</label>
+                <input type="tel" id="phone" required>
+            </div>
+            <div class="form-group">
+                <label for="tickets">Количество мест</label>
+                <input type="number" id="tickets" min="1" max="10" value="1" required>
+            </div>
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Забронировать</button>
+        </form>
+    </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <div class="container">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>О компании</h3>
+                <p>TicketHub — платформа для бронирования событий</p>
+            </div>
+            <div class="footer-section">
+                <h3>Быстрые ссылки</h3>
+                <a href="#" onclick="showPage('home'); return false;">Главная</a>
+                <a href="#" onclick="showPage('events'); return false;">События</a>
+                <a href="#" onclick="showPage('about'); return false;">О нас</a>
+                <a href="#" onclick="showPage('contacts'); return false;">Контакты</a>
+            </div>
+            <div class="footer-section">
+                <h3>Контакты</h3>
+                <a href="tel:+77075508424"><img src="img/phone-img.svg" width="19" height="19"> +7 (707) 550-84-24</a>
+                <a href="mailto:bsdudent@gmail.com"><img src="img/mail-img.svg" width="19" height="19">️ bsdudent@gmail.com</a>
+                <p><img src="img/location-img.svg" width="19" height="19">Проспект Абылай хана, 1/1, Каскелен</p>
+            </div>
+            <div class="footer-section">
+                <h3>Мы в соцсетях</h3>
+                <a href="https://www.facebook.com/sdukz/">Facebook</a>
+                <a href="https://www.instagram.com/sdukz/?hl=en">Instagram</a>
+                <a href="https://x.com/sdukz?lang=en">Twitter</a>
+                <a href="https://www.linkedin.com/company/suleyman-demirel-university-kazakhstan/?originalSubdomain=kz">LinkedIn</a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 TicketHub. Все права защищены.</p>
+        </div>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
