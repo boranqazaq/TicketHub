@@ -8,7 +8,7 @@ const events = [
         location: "Blue Hall",
         description: "Узнайте о последних достижениях в области искусственного интеллекта",
         price: "Бесплатно",
-        emoji: "🤖"
+        image: "img/conferences-img.jpg"  // Changed from emoji
     },
     {
         id: 2,
@@ -19,7 +19,7 @@ const events = [
         location: "H02",
         description: "Практический мастер-класс по современному веб-дизайну",
         price: "2000 тг",
-        emoji: "🎨"
+        image: "img/design-img.jpg"  // Changed from emoji
     },
     {
         id: 3,
@@ -30,7 +30,7 @@ const events = [
         location: "Red Hall",
         description: "Как начать собственный бизнес: советы от экспертов",
         price: "1500 тг",
-        emoji: "💼"
+        image: "img/business-img.jpg"  // Changed from emoji
     },
     {
         id: 4,
@@ -41,7 +41,7 @@ const events = [
         location: "Mini Red Hall",
         description: "Музыка, танцы и атмосфера настоящего праздника",
         price: "690 тг",
-        emoji: "🎵"
+        image: "img/music-img.png"  // Changed from emoji
     }
 ];
 
@@ -82,7 +82,9 @@ function renderEvents(filteredEvents = events) {
     filteredEvents.forEach(ev => {
         grid.innerHTML += `
         <div class="event-card">
-            <div class="event-image">${ev.emoji}</div>
+            <div class="event-image">
+                <img src="${ev.image}" alt="${ev.title}" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
             <div class="event-content">
                 <h3 class="event-title">${ev.title}</h3>
     

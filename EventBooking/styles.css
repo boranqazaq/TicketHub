@@ -18,8 +18,8 @@ header {
     position: sticky;
     top: 0;
     z-index: 100;
-    border-bottom-left-radius: 30px;
-    border-bottom-right-radius: 30px;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
 }
 
 .container {
@@ -235,6 +235,10 @@ main {
 .event-image {
     height: 160px;
     background: #eaeaea;
+    display: flex;          /* ADD THIS */
+    align-items: center;    /* ADD THIS */
+    justify-content: center; /* ADD THIS */
+    overflow: hidden;       /* ADD THIS */
 }
 
 .event-content {
