@@ -54,6 +54,20 @@ function showPage(pageId) {
     window.scrollTo(0, 0);
 }
 
+const menuToggle = document.getElementById('menu-toggle');
+const navLinks = document.getElementById('nav-links');
+const links = document.querySelectorAll('#nav-links a');
+
+menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('active');
+});
+
+links.forEach(link => {
+    link.addEventListener('click', () => {
+        navLinks.classList.remove('active');
+    })
+});
+
 // РЕНДЕР КАРТОЧЕК
 function renderEvents(filteredEvents = events) {
     const grid = document.getElementById("eventsGrid");
@@ -73,9 +87,9 @@ function renderEvents(filteredEvents = events) {
                 <h3 class="event-title">${ev.title}</h3>
     
                 <div class="event-meta">
-                    <div class="event-meta-item">📅 ${ev.date}</div>
-                    <div class="event-meta-item">⏰ ${ev.time}</div>
-                    <div class="event-meta-item">📍 ${ev.location}</div>
+                    <div class="event-meta-item"><img src="img/date-img.svg" alt="date" width="16" height="16"> ${ev.date}</div>
+                    <div class="event-meta-item"><img src="img/alarm-img.svg" alt="date" width="16" height="16"> ${ev.time}</div>
+                    <div class="event-meta-item"><img src="img/location-black-img.svg" alt="date" width="16" height="16"> ${ev.location}</div>
                 </div>
 
                 <p class="event-description">${ev.description}</p>
@@ -108,6 +122,9 @@ function searchEvents() {
 // МОДАЛЬНОЕ ОКНО
 function openModal(eventName) {
     document.getElementById("eventName").value = eventName;
+    document.getElementById("textForm").addEventListener("click", function () {
+        window.open("https://docs.google.com/forms/d/e/1FAIpQLSf2rgzleyEkV-wh1KMRVqqWsDiN3JKAvVjcW5US79STYf3R5w/viewform?usp=publish-editor", "_blank");
+    });
     document.getElementById("bookingModal").style.display = "block";
 }
 

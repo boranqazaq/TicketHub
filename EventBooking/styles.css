@@ -38,7 +38,7 @@ header {
 .logo {
     display: flex;
     align-items: center;
-    gap: 0.8rem;
+    gap: 1.5rem;
     font-size: 1.8rem;
     font-weight: 700;
     letter-spacing: -0.5px;
@@ -53,7 +53,6 @@ header {
 .logo-image {
     width: 45px;
     height: 45px;
-    background: white;
     border-radius: 8px;
     display: flex;
     align-items: center;
@@ -511,10 +510,6 @@ footer {
         gap: 1rem;
     }
 
-    nav a {
-        margin-left: 1rem;
-    }
-
     .hero h1 {
         font-size: 2rem;
     }
@@ -537,5 +532,55 @@ footer {
 
     .btn-large {
         width: 100%;
+    }
+}
+
+/* --- БУРГЕР МЕНЮ --- */
+
+.burger {
+    font-size: 32px;
+    cursor: pointer;
+    display: none;
+    user-select: none;
+    color: white;
+}
+
+#nav-links {
+    display: flex;
+    gap: 2rem;
+}
+
+@media (max-width: 768px) {
+
+    /* Показываем бургер */
+    .burger {
+        display: block;
+        position: absolute;
+        right: 30px;
+        top: 22px;
+    }
+
+    /* Мобильное меню */
+    #nav-links {
+        display: none;
+        flex-direction: column;
+        background: black;
+        position: absolute;
+        right: 20px;
+        top: 70px;
+        padding: 15px 20px;
+        border-radius: 12px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        width: 180px;
+        animation: fadeIn 0.3s ease-out;
+    }
+
+    #nav-links a {
+        margin: 10px 0;
+        font-size: 1.1rem;
+    }
+
+    #nav-links.active {
+        display: flex;
     }
 }

@@ -11,10 +11,14 @@
     <div class="container">
         <div class="header-content">
             <div class="logo" onclick="showPage('home')">
-                <div class="logo-image"><img src="img/sdu-logo-img.png" alt="Sdu logo" width="50" height="50"></div>
+                <div class="logo-image"><img src="img/sdu-logo-img.png" alt="Sdu logo" width="55" height="55"></div>
                 <span>TicketHub</span>
             </div>
-            <nav>
+            <div class="burger" id="menu-toggle">
+                <img src="img/burger-img.svg" alt="burger" width=35 height="35">
+            </div>
+
+            <nav id="nav-links">
                 <a href="#" onclick="showPage('home'); return false;">Главная</a>
                 <a href="#" onclick="showPage('about'); return false;">О нас</a>
                 <a href="#" onclick="showPage('events'); return false;">События</a>
@@ -102,7 +106,9 @@
         </section>
 
         <div class="search-box">
+            <label for="searchInput" style="display:none;">Link</label>
             <input type="text" id="searchInput" placeholder="Поиск по названию...">
+            <label for="categorySelect" style="display:none;">Link</label>
             <select id="categorySelect">
                 <option value="">Все категории</option>
                 <option value="conference">Конференция</option>
@@ -180,21 +186,10 @@
                 <input type="text" id="eventName" readonly>
             </div>
             <div class="form-group">
-                <label for="fullName">Ваше имя</label>
-                <input type="text" id="fullName" required>
+                <label for="textForm">Ссылка:</label>
+                <input type="text" id="textForm" value="Открыть ссылку" readonly style="cursor:pointer;">
             </div>
-            <div class="form-group">
-                <label for="email">Email</label>
-                <input type="email" id="email" required>
-            </div>
-            <div class="form-group">
-                <label for="phone">Телефон</label>
-                <input type="tel" id="phone" required>
-            </div>
-            <div class="form-group">
-                <label for="tickets">Количество мест</label>
-                <input type="number" id="tickets" min="1" max="10" value="1" required>
-            </div>
+
             <button type="submit" class="btn btn-primary" style="width: 100%;">Забронировать</button>
         </form>
     </div>
